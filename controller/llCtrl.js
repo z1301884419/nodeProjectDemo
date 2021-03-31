@@ -1,4 +1,4 @@
-const llConfig=require('../dbConfig/DBconfig');
+const llConfig=require('../config/dbConfig');
 module.exports={
-    
+
 }
