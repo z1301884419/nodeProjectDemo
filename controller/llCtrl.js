@@ -7,11 +7,10 @@ module.exports={
             [userName,userPwd],
             (err,data)=>{
                 if(!err){
-                    console.log(data[0]);
                     if(data.length>0){
                         delete data[0].u_password;
                         Object.assign(req.session,data[0]);
-                        console.log(req.session);
+                        res.redirect('/pages/cart.html')
                     }else{
                         res.send({
                             code:401,
@@ -23,5 +22,8 @@ module.exports={
                 }
             }
         )
+    },
+    getUser(req,res){
+        console.log(req.session);
     }
 }
