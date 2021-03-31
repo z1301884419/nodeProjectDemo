@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Cart</title>
+<title>Product</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="aStar Fashion Template Project">
@@ -11,8 +11,8 @@
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="../styles/cart.css">
-<link rel="stylesheet" type="text/css" href="../styles/cart_responsive.css">
+<link rel="stylesheet" type="text/css" href="../styles/product.css">
+<link rel="stylesheet" type="text/css" href="../styles/product_responsive.css">
 </head>
 <body>
 
@@ -32,12 +32,12 @@
 				
 				<!-- Language -->
 				<div class="info_languages has_children" style="margin-left: 20px;">
-					<div class="dropdown_text">登录</div>
+					<div class="dropdown_text loginBtn">登录</div>
 				</div>
 
 				<!-- Currency -->
 				<div class="info_currencies has_children">
-					<div class="dropdown_text">注册</div>
+					<div class="dropdown_text registerBtn">注册</div>
 				</div>
 			</div>
 		</div>
@@ -70,159 +70,105 @@
 		<!-- Cart -->
 		<div class="cart d-flex flex-row align-items-center justify-content-start">
 			<div class="cart_icon"><a href="cart.html">
-				<img src="images/bag.png" alt="">
+				<img src="../images/bag.png" alt="">
 				<div class="cart_num">2</div>
 			</a></div>
 			<div class="cart_text">bag</div>
 			<div class="cart_price">$39.99</div>
 		</div>
 	</div>
-
 	<!-- Home -->
 
 	<div class="home">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/product_background.jpg" data-speed="0.8"></div>
 		<div class="home_container">
 			<div class="home_content">
-				<div class="home_title">购物车</div>
+				<div class="home_title">Shop</div>
 				<div class="breadcrumbs">
 					<ul class="d-flex flex-row align-items-center justify-content-start">
 						<li><a href="index.html">Home</a></li>
-						<li>Your Cart</li>
+						<li><a href="categories.html">Woman</a></li>
+						<li><a href="categories.html">Accessories</a></li>
+						<li>Shoulder Bag</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Cart -->
+	<!-- Products -->
 
-	<div class="cart_section">
+	<div class="product">
+
+		<!-- Product Content -->
 		<div class="section_container">
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<div class="cart_container">
-							
-							<!-- Cart Bar -->
-							<div class="cart_bar">
-								<ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-start">
-									<li>商品名称</li>
-									<li>颜色</li>
-									<li>尺寸</li>
-									<li>价格</li>
-									<li>数量</li>
-									<li>总计</li>
-								</ul>
-							</div>
-
-							<!-- Cart Items -->
-							<div class="cart_items">
-								<ul class="cart_items_list">
-
-									<!-- Cart Item -->
-									<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-										<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-											<div><div class="product_image"><img src="images/cart_1.jpg" alt=""></div></div>
-											<div class="product_name"><a href="product.html">棕色背包</a></div>
+						<div class="product_content_container d-flex flex-lg-row flex-column align-items-start justify-content-start">
+							<div class="product_content order-lg-1 order-2">
+								<div class="product_content_inner">
+									<div class="product_image_row d-flex flex-md-row flex-column align-items-md-end align-items-start justify-content-start">
+										<div class="product_image_1 product_image">
+											<img src="../images/product_single_1.jpg" alt="">
 										</div>
-										<div class="product_color text-lg-center product_text"><span>Color: </span>棕色</div>
-										<div class="product_size text-lg-center product_text"><span>Size: </span>One Size</div>
-										<div class="product_price text-lg-center product_text"><span>Price: </span>$19.50</div>
-										<div class="product_quantity_container">
-											<div class="product_quantity ml-lg-auto mr-lg-auto text-center">
-												<span class="product_text product_num">1</span>
-												<div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
-												<div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
-											</div>
-										</div>
-										<div class="product_total text-lg-center product_text"><span>Total: </span>$19.50</div>
-									</li>
-								</ul>
-							</div>
-
-							<!-- Cart Buttons -->
-							<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
-								<div class="cart_buttons_inner ml-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-									<div class="button button_continue trans_200"><a href="categories.html">继续购物</a></div>
-									<div class="button button_clear trans_200"><a href="categories.html">清空购物车</a></div>
-									<div class="button button_update trans_200"><a href="categories.html">刷新购物车</a></div>
+										<div class="product_image_2 product_image"><img src="../images/product_single_2.jpg" alt=""></div>
+									</div>
+									<div class="product_image_row">
+										<div class="product_image_3 product_image"><img src="../images/product_single_3.jpg" alt=""></div>
+									</div>
+									<div class="product_image_row d-flex flex-md-row flex-column align-items-start justify-content-start">
+										<div class="product_image_4 product_image"><img src="../images/product_single_4.jpg" alt=""></div>
+										<div class="product_image_5 product_image"><img src="../images/product_single_5.jpg" alt=""></div>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="section_container cart_extra_container">
-			<div class="container">
-				<div class="row">
-
-					<!-- Shipping & Delivery -->
-					<div class="col-xxl-6">
-						<div class="cart_extra cart_extra_1">
-							<div class="cart_extra_content cart_extra_coupon">
-								<div class="cart_extra_title">优惠码：</div>
-								<div class="coupon_form_container">
-									<form action="#" id="coupon_form" class="coupon_form">
-										<input type="text" class="coupon_input" required="required">
-										<button class="coupon_button">获取优惠</button>
-									</form>
-								</div>
-								<div class="shipping">
-									<div class="cart_extra_title">物流方式：</div>
-									<ul>
-										<li class="shipping_option d-flex flex-row align-items-center justify-content-start">
-											<label class="radio_container">
-												<input type="radio" id="radio_1" name="shipping_radio" class="shipping_radio">
-												<span class="radio_mark"></span>
-												<span class="radio_text">隔日达</span>
-											</label>
-											<div class="shipping_price ml-auto">$4.99</div>
-										</li>
-										<li class="shipping_option d-flex flex-row align-items-center justify-content-start">
-											<label class="radio_container">
-												<input type="radio" id="radio_2" name="shipping_radio" class="shipping_radio">
-												<span class="radio_mark"></span>
-												<span class="radio_text">标准物流</span>
-											</label>
-											<div class="shipping_price ml-auto">$1.99</div>
-										</li>
-										<li class="shipping_option d-flex flex-row align-items-center justify-content-start">
-											<label class="radio_container">
-												<input type="radio" id="radio_3" name="shipping_radio" class="shipping_radio" checked>
-												<span class="radio_mark"></span>
-												<span class="radio_text">自提</span>
-											</label>
-											<div class="shipping_price ml-auto">Free</div>
-										</li>
+							<div class="product_sidebar order-lg-2 order-1">
+								<form action="#" id="product_form" class="product_form">
+									<div class="product_name">棕色背包</div>
+									<div class="product_price">$19.50</div>
+									<div class="product_color">颜色: <span>棕色</span></div>
+									<div class="product_size">
+										<div class="product_size_title">选择尺寸</div>
+										<div class="product_size_list">
+											<ul>
+												<li class="size_available">
+													<input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1">
+													<label for="radio_1">35</label>
+												</li>
+												<li class="size_available">
+													<input type="radio" id="radio_2" name="product_radio" class="regular_radio radio_2">
+													<label for="radio_2">36</label>
+												</li>
+												<li class="size_available">
+													<input type="radio" id="radio_3" name="product_radio" class="regular_radio radio_3">
+													<label for="radio_3">37</label>
+												</li>
+												<li class="size_available">
+													<input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4">
+													<label for="radio_4">38</label>
+												</li>
+												<li>
+													<input type="radio" id="radio_5" name="product_radio" class="regular_radio radio_5" disabled>
+													<label for="radio_5">39</label>
+												</li>
+												<li>
+													<input type="radio" id="radio_6" name="product_radio" class="regular_radio radio_6" disabled>
+													<label for="radio_6">40</label>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<button class="cart_button trans_200">添加至购物车</button>
+									<div class="similar_products_button trans_200"><a href="categories.html">查看相似商品</a></div>
+								</form>
+								<div class="product_links">
+									<ul class="text-center">
+										<!-- <li><a href="#">See guide</a></li>
+										<li><a href="#">Shipping</a></li>
+										<li><a href="#">Returns</a></li> -->
 									</ul>
 								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Cart Total -->
-					<div class="col-xxl-6">
-						<div class="cart_extra cart_extra_2">
-							<div class="cart_extra_content cart_extra_total">
-								<div class="cart_extra_title">购物车总计</div>
-								<ul class="cart_extra_total_list">
-									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="cart_extra_total_title">商品小计</div>
-										<div class="cart_extra_total_value ml-auto">$29.90</div>
-									</li>
-									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="cart_extra_total_title">物流费</div>
-										<div class="cart_extra_total_value ml-auto">Free</div>
-									</li>
-									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="cart_extra_total_title">总计</div>
-										<div class="cart_extra_total_value ml-auto">$29.90</div>
-									</li>
-								</ul>
-								<div class="checkout_button trans_200"><a href="checkout.html">购买</a></div>
 							</div>
 						</div>
 					</div>
@@ -234,7 +180,7 @@
 	<!-- Newsletter -->
 
 	<div class="newsletter">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/newsletter.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../images/newsletter.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2">
@@ -275,11 +221,11 @@
 								</div>
 								<div class="cards">
 									<ul class="d-flex flex-row align-items-center justify-content-start">
-										<li><a href="#"><img src="images/card_1.jpg" alt=""></a></li>
-										<li><a href="#"><img src="images/card_2.jpg" alt=""></a></li>
-										<li><a href="#"><img src="images/card_3.jpg" alt=""></a></li>
-										<li><a href="#"><img src="images/card_4.jpg" alt=""></a></li>
-										<li><a href="#"><img src="images/card_5.jpg" alt=""></a></li>
+										<li><a href="#"><img src="../images/card_1.jpg" alt=""></a></li>
+										<li><a href="#"><img src="../images/card_2.jpg" alt=""></a></li>
+										<li><a href="#"><img src="../images/card_3.jpg" alt=""></a></li>
+										<li><a href="#"><img src="../images/card_4.jpg" alt=""></a></li>
+										<li><a href="#"><img src="../images/card_5.jpg" alt=""></a></li>
 									</ul>
 								</div>
 							</div>
@@ -314,7 +260,7 @@
 
 									<!-- Blog Item -->
 									<div class="footer_blog_item d-flex flex-row align-items-start justify-content-start">
-										<div class="footer_blog_image"><a href="blog.html"><img src="images/footer_blog_1.jpg" alt=""></a></div>
+										<div class="footer_blog_image"><a href="blog.html"><img src="../images/footer_blog_1.jpg" alt=""></a></div>
 										<div class="footer_blog_content">
 											<div class="footer_blog_title"><a href="blog.html">流行趋势</a></div>
 											<div class="footer_blog_date">june 06, 2018</div>
@@ -324,7 +270,7 @@
 
 									<!-- Blog Item -->
 									<div class="footer_blog_item d-flex flex-row align-items-start justify-content-start">
-										<div class="footer_blog_image"><a href="blog.html"><img src="images/footer_blog_2.jpg" alt=""></a></div>
+										<div class="footer_blog_image"><a href="blog.html"><img src="../images/footer_blog_2.jpg" alt=""></a></div>
 										<div class="footer_blog_content">
 											<div class="footer_blog_title"><a href="blog.html">本年流行</a></div>
 											<div class="footer_blog_date">june 06, 2018</div>
@@ -449,6 +395,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> - Col
 <script src="../plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="../plugins/easing/easing.js"></script>
 <script src="../plugins/parallax-js-master/parallax.min.js"></script>
-<script src="../js/cart.js"></script>
+<script src="../plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="../plugins/Isotope/fitcolumns.js"></script>
+<script src="../js/product.js"></script>
 </body>
 </html>
