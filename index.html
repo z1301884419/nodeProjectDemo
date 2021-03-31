@@ -27,12 +27,12 @@
 				
 				<!-- Language -->
 				<div class="info_languages has_children" style="margin-left: 20px;">
-					<div class="dropdown_text">登录</div>
+					<div class="dropdown_text loginBtn" data-toggle="modal" data-target="#staticBackdrop">登录</div>
 				</div>
 
 				<!-- Currency -->
 				<div class="info_currencies has_children">
-					<div class="dropdown_text">注册</div>
+					<div class="dropdown_text registerBtn">注册</div>
 				</div>
 			</div>
 		</div>
@@ -72,7 +72,35 @@
 			<div class="cart_price">$39.99</div>
 		</div>
 	</div>
-
+	<!-- 登录模态框 -->
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="staticBackdropLabel" style="color: green;">LOGIN</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+					  <label for="recipient-name" class="col-form-label">账号:</label>
+					  <input type="text" name="userName" class="form-control" id="recipient-name">
+					</div>
+					<div class="form-group">
+					  <label for="message-text" class="col-form-label">密码:</label>
+					  <input type="password" name="userPwd" class="form-control" id="recipient-name">
+					</div>
+				  </form>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+			  <button type="button" class="btn btn-success">登录</button>
+			</div>
+		  </div>
+		</div>
+	</div>
 	<!-- Home -->
 
 	<div class="home">
@@ -510,5 +538,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> - Col
 <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="plugins/Isotope/fitcolumns.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/common.js"></script>
 </body>
 </html>
