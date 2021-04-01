@@ -1,4 +1,8 @@
-const express =require('express');
-const manRouter=express.Router();
+const express = require('express')
+const manCtrl = require('../controller/manCtrl')
+const manRouter = express.Router()
 
-module.exports=manRouter
+manRouter.get('/selectMan', manCtrl.selectMan)
+manRouter.get('/selectManImg', manCtrl.selectManImg)
+
+module.exports = manRouter
