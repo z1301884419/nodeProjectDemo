@@ -1149,7 +1149,7 @@ section
 }
 .product_image
 {
-	/* height: 119px; */
+	height: 119px;
 	width: 119px;
 	overflow: hidden;
 }
