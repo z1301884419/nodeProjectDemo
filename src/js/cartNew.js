@@ -1,3 +1,4 @@
+let idArr = [];
 // 渲染页面
 $.ajax({
     url: '/cartInfo',
@@ -17,6 +18,7 @@ $.ajax({
         console.log(data.data);
         let str = '';
         $.each(data.data, (i, item) => {
+            idArr.push(item.c_id)
             str += `<li data-cid=${item.c_id} class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
             <div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
                 <div>
@@ -47,8 +49,15 @@ $.ajax({
     }
 })
 
+// $(() => {
+//     console.log(123);
+//     // console.log($("..cart_items_list > .cart_item").attr("data-cid"));
+//     console.log(idArr);
+// })
+
 // 点击清空购物车
 $(".button_clear").click(() => {
+    console.log(idArr);
     $.ajax({
         url: '/clearAll',
         type: 'POST',
