@@ -1,0 +1,94 @@
+.userCenter {
+    width: 263px;
+    height: 600px;
+    /* background-color: rgb(43, 42, 42); */
+    z-index: 999;
+    background-image: url('../upload/tu1.jpg');
+    background-size: cover;
+    text-align: center;
+    padding-top: 20px;
+    opacity: 0;
+    transition: all .4s;
+}
+
+.loginBox {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    /* padding-top: 40px; */
+}
+.loginBox2{
+    width: 100%;
+    height: 40%;
+    /* border: 1px solid green; */
+    line-height: 16px;
+    display: block;
+}
+.userNameInfo {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+}
+.loginBtn{
+    /* background-color: slategray; */
+    border-right: 1px solid white;
+    padding-right: 30px;
+    float: left;
+    margin-left: 60px;
+}
+.registerBtn{
+    /* background-color: greenyellow; */
+    padding-left: 30px;
+    float: left;
+}
+.shou{
+    cursor: pointer;
+}
+.userHeader{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+.userHeader >img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+.userNameBox{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 4px;
+}
+.userNameBox >input{
+    background: transparent;
+    border: 0;
+    color: white;
+    width: 60px;
+    text-align: center;
+    outline: none;
+    
+}
+.caozuo{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+.caozuo >div{
+    text-align: left;
+    padding-left: 65px;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+.caozuo >div >span{
+    font-size: 22px;
+    margin-right: 10px;
+}
+.caozuo >div:hover{
+    color: rgb(204, 49, 38);
+}

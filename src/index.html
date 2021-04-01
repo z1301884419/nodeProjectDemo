@@ -14,44 +14,9 @@
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+	<link rel="stylesheet" href="./tools/font/iconfont.css">
 	<link rel="stylesheet" type="text/css" href="styles/index.css">
-	<style>
-		.userCenter {
-			width: 263px;
-			height: 600px;
-			background-color: white;
-		}
-
-		.loginBox {
-			width: 100%;
-			height: 100%;
-			margin-top: 20px;
-		}
-		.loginBox2{
-			width: 100%;
-			height: 40%;
-			line-height: 16px;
-			text-align: center;
-			display: flex;
-			justify-content: center;
-		}
-		.userNameInfo {
-			width: 100%;
-			height: 100%;
-			line-height: 40px;
-			text-align: center;
-		}
-		.loginBtn{
-			border-right: 1px solid white;
-			padding-right: 30px;
-		}
-		.registerBtn{
-			padding-left: 30px;
-		}
-		.shou{
-			cursor: pointer;
-		}
-	</style>
+	<link rel="stylesheet" href="./styles/lilingLogin.css">
 </head>
 
 <body>
@@ -64,15 +29,32 @@
 			<!-- Info -->
 			<div class="info" style="height: 40px;font-size: 16px;color: rgb(233, 232, 232);">
 				<div class="loginBox">
-					<div class="userNameInfo shou" style="display: none;">李玲</div>
-					<div class="loginBox2">
-						<div class="loginBtn shou" data-toggle="modal" data-target="#exampleModal">登录</div>
-						<div class="registerBtn shou">注册</div>
-					</div>
+					<div class="userNameInfo shou" style="display: none;"></div>
 				</div>
-
-				<!-- <div class="userCenter"></div> -->
+				<div class="loginBox2">
+					<div class="loginBtn shou" data-toggle="modal" data-target="#staticBackdrop">登录</div>
+					<div class="registerBtn shou">注册</div>
+				</div>
+				<div class="userNode">
+					
+				</div>
+				<!-- <div class="userCenter">
+					<div class="userHeader">
+						<img src="./upload/6.jpg" alt="">
+					</div>
+					<div class="userNameBox">
+						<input type="text" value="李玲" disabled='disabled'><span class="iconfont icon-bi shou"></span>
+					</div>
+					<div class="caozuo">
+						<div><span class="iconfont icon-shoucang"></span>我的收藏</div>
+						<div><span class="iconfont icon-dingdan1"></span>我的订单</div>
+						<div><span class="iconfont icon-gouwuche"></span>我的购物车</div>
+						<div><span class="iconfont icon-zuji"></span>我浏览的</div>
+					</div>
+				</div> -->
 			</div>
+
+			
 
 			<!-- Logo -->
 			<div class="sidebar_logo">
@@ -241,7 +223,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">denim men shirt</a></div>
 											<div class="product_price">$59.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -255,7 +238,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">long red shirt</a></div>
 											<div class="product_price">$79.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -266,9 +250,11 @@
 											<img src="images/product_7.jpg" alt="">
 										</div>
 										<div class="product_content text-center">
-											<div class="product_title"><a href="product.html">long sleeve jacket</a></div>
+											<div class="product_title"><a href="product.html">long sleeve jacket</a>
+											</div>
 											<div class="product_price">$15.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -283,7 +269,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">denim men shirt</a></div>
 											<div class="product_price">$43.99<span>RRP 64.40</span></div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -301,7 +288,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">denim men shirt</a></div>
 											<div class="product_price">$59.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -315,7 +303,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">long red shirt</a></div>
 											<div class="product_price">$79.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -326,9 +315,11 @@
 											<img src="images/product_7.jpg" alt="">
 										</div>
 										<div class="product_content text-center">
-											<div class="product_title"><a href="product.html">long sleeve jacket</a></div>
+											<div class="product_title"><a href="product.html">long sleeve jacket</a>
+											</div>
 											<div class="product_price">$15.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -343,7 +334,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">denim men shirt</a></div>
 											<div class="product_price">$43.99<span>RRP 64.40</span></div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -362,7 +354,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">denim men shirt</a></div>
 											<div class="product_price">$59.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -376,7 +369,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">long red shirt</a></div>
 											<div class="product_price">$79.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -387,9 +381,11 @@
 											<img src="images/product_7.jpg" alt="">
 										</div>
 										<div class="product_content text-center">
-											<div class="product_title"><a href="product.html">long sleeve jacket</a></div>
+											<div class="product_title"><a href="product.html">long sleeve jacket</a>
+											</div>
 											<div class="product_price">$15.90</div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
@@ -404,7 +400,8 @@
 										<div class="product_content text-center">
 											<div class="product_title"><a href="product.html">denim men shirt</a></div>
 											<div class="product_price">$43.99<span>RRP 64.40</span></div>
-											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to cart</a></div>
+											<div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+													cart</a></div>
 										</div>
 									</div>
 								</div>
