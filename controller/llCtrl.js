@@ -10,7 +10,11 @@ module.exports={
                     if(data.length>0){
                         delete data[0].u_password;
                         Object.assign(req.session,data[0]);
-                        res.redirect('/pages/cart.html')
+                        res.send({
+                            code:200,
+                            msg:'查询成功',
+                            data:req.session
+                        })
                     }else{
                         res.send({
                             code:401,
@@ -22,8 +26,5 @@ module.exports={
                 }
             }
         )
-    },
-    getUser(req,res){
-        console.log(req.session);
     }
 }

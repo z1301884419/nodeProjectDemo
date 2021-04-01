@@ -12,7 +12,10 @@ $('.loginTrue').on('click',function(){
         dataType:'JSON',
         success:function(data){
             if(data.code==200){
-                loginStaus=true;
+                console.log(data.data.u_name);
+                $('.loginBtn').css('display','none');
+                $('.userNameInfo').css('display','block');
+                $('.userNameInfo').text(data.data.u_name);
             }
         },
         err:function(err){
@@ -20,3 +23,6 @@ $('.loginTrue').on('click',function(){
         }
     });
 });
+$('.userNameInfo').on('mouseover',function(){
+    
+})
