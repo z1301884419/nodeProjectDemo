@@ -1,10 +1,11 @@
-console.log($('.hot_shop').find('.product_image').eq(0).find('img').attr('src'));
-console.log($('.hot_shop').find('.product_image').eq(1).find('img').attr('src'));
-console.log($('.hot_shop').find('.product_image').eq(2).find('img').attr('src'));
-console.log($('.hot_shop').find('.product_image').eq(3).find('img').attr('src'));
+
 let h_nowpage =1
 let s_nowpage =1
 let n_nowpage =1
+
+let h_maxpage =1
+let s_maxpage =1
+let n_maxpage =1
 function shops (shop_data,renderNode,statu){
   $(`${renderNode}`).find('.shop-box').html("")
   for(let i=0;i<=3;i++){
@@ -37,6 +38,7 @@ function hotshop(nowpage){
     },
     success(data){
       console.log(data);
+      h_maxpage=data.maxpage
       shops(data.data,'.hot_shop','hot')
     }
   })
@@ -52,6 +54,7 @@ function saleshop(nowpage){
     },
     success(data){
       console.log(data);
+      s_maxpage=data.maxpage
       shops(data.data,'.sale_shop','sale')
     }
   })
@@ -67,6 +70,7 @@ function newshop(nowpage){
     },
     success(data){
       console.log(data);
+      n_maxpage=data.maxpage
       shops(data.data,'.new_shop','new')
     }
   })
@@ -77,17 +81,32 @@ newshop(n_nowpage)
 $('.toRight').click(next)
 //下一页
 function next() {
-  console.log($(this).parent().attr('class'));
   if($(this).parent().attr('class')=="product-box hot_shop"){
-    h_nowpage++;
+    h_nowpage>=h_maxpage?h_nowpage=h_maxpage:h_nowpage++;
     hotshop(h_nowpage)
   }
   if($(this).parent().attr('class')=="product-box sale_shop"){
-    s_nowpage++;
+    s_nowpage>=s_maxpage?s_nowpage=s_maxpage:s_nowpage++;
     saleshop(s_nowpage)
   }
   if($(this).parent().attr('class')=="product-box new_shop"){
-    n_nowpage++;
+    n_nowpage>=n_maxpage?n_nowpage=n_maxpage:n_nowpage++;
+    newshop(n_nowpage)
+  }
+}
+//上一页
+$('.toLeft').click(prev)
+function prev() {
+  if($(this).parent().attr('class')=="product-box hot_shop"){
+    h_nowpage<=1?h_nowpage=1:h_nowpage--;
+    hotshop(h_nowpage)
+  }
+  if($(this).parent().attr('class')=="product-box sale_shop"){
+    s_nowpage<=1?s_nowpage=1:s_nowpage--;
+    saleshop(s_nowpage)
+  }
+  if($(this).parent().attr('class')=="product-box new_shop"){
+    n_nowpage<=1?n_nowpage=1:n_nowpage--;
     newshop(n_nowpage)
   }
 }
