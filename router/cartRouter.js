@@ -7,8 +7,12 @@ cartRouter.get('/cartInfo', cartcontrol.cartInfo);
 // 清空购物车
 cartRouter.post('/clearAll', cartcontrol.clearAll);
 // 加减请求
-cartRouter.post('/modifyCartNum', cartcontrol.modifyCartNum);
+cartRouter.get('/modifyCartNum', cartcontrol.modifyCartNum);
 
 cartRouter.get('/searchCart', cartcontrol.searchCart);
+
+cartRouter.get('/checkOutSelect', cartcontrol.checkOutSelect);
+
+cartRouter.post('/checkOut', cartcontrol.checkOut)
 
 module.exports = cartRouter;
