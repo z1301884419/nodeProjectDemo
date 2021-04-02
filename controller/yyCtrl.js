@@ -52,9 +52,16 @@ async new_Info(req,resp){
   },
   async addCar(req,resp){
     let {shop_id} = req.query
-    console.log(req.session);
-    //let {session} = req.session
-    console.log(shop_id);
+    let {shop_size} = req.query
+    let {shop_price} = req.query
+    if(req.session.user) {
+      let user = req.session.user
+      let u_id = user.u_id
+      //添加至购物车
+      let obj = await dbDao.insertInfo('insert into cart value(null,?,?,?,1,?)', [shop_id, u_id, shop_size, shop_price])
+      resp.send(obj)
+    }else {
+      resp.send({code:204,msg:"用户未登录"})
+    }
   }
-
 }

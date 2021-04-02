@@ -134,13 +134,21 @@ $.ajax({
 			if(shop_size_){
 				$.ajax({
 					url: '/addCar',
-					type: 'json',
+					type: 'get',
 					dataType: 'json',
 					data:{
-						shop_id
+						shop_id,
+						shop_size:shop_size_,
+						shop_price:$('.product_price').html().slice(1)
 					},
 					success(data) {
 						console.log(data);
+						if(data.code==200){
+							console.log(11);
+						}else {
+							$('.tishi_modal').css("display","block")
+							$('.tishi_box').css("display","block")
+						}
 					}
 				})
 			}else {
@@ -149,3 +157,9 @@ $.ajax({
 		})
 	}
 })
+
+//关闭提示框
+function close_modal() {
+	$('.tishi_modal').css("display","none")
+	$('.tishi_box').css("display","none")
+}
