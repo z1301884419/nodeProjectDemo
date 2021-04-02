@@ -5,10 +5,10 @@ $.ajax({
     dataType: 'JSON',
     success: function (data) {
         console.log(data.user);
-        if (data.user!=undefined) {
+        if (data.user != undefined) {
             $('.loginBox2').css('display', 'none');
             $('.userNameInfo').css('display', 'block');
-            $('.userNameInfo').text(data.user.u_name);
+            $('.userNameInfo').text('欢迎您，'+data.user.u_name);
             $('.userNode').html(`<div class="userCenter">
                 <div class="userHeader">
                     <img src="${data.user.u_header}" alt="">
@@ -26,10 +26,10 @@ $.ajax({
                     <div class="exitLogin"><span class="iconfont icon-0tuichudenglu-05"></span>退出登录</div>
                 </div>
             </div>`)
-        }else{
-        console.log('未登录');
-    }
-},
+        } else {
+            console.log('未登录');
+        }
+    },
     err: function () {
 
     }
@@ -50,7 +50,7 @@ $('.loginTrue').on('click', function () {
             if (data.code == 200) {
                 $('.loginBox2').css('display', 'none');
                 $('.userNameInfo').css('display', 'block');
-                $('.userNameInfo').text(data.data.user.u_name);
+                $('.userNameInfo').text('欢迎您，'+data.data.user.u_name);
                 $('.userNode').html(`<div class="userCenter">
                 <div class="userHeader">
                     <img src="${data.data.user.u_header}" alt="">
@@ -83,50 +83,50 @@ $('.info').on('mouseleave', function () {
     $('.userCenter').css('display', 'none');
 });
 //退出登录
-$('.info').on('click','.exitLogin',function(){
+$('.info').on('click', '.exitLogin', function () {
     $.ajax({
-        url:'/loginOut',
-        type:'GET',
-        dataType:'JSON',
-        success:data=>{
+        url: '/loginOut',
+        type: 'GET',
+        dataType: 'JSON',
+        success: data => {
             console.log(data);
-            if(data.code==200){
+            if (data.code == 200) {
                 window.location.reload()
             }
         }
     })
 });
 //点击修改名称
-$('.info').on('click','.modifyName',function(){
+$('.info').on('click', '.modifyName', function () {
     $(this).prev().removeAttr('disabled').focus();
-    let uid=$(this).attr('data-id');
-    $(this).css('display','none')
-    $('.modifyNameTrue').css('display','block');
+    let uid = $(this).attr('data-id');
+    $(this).css('display', 'none')
+    $('.modifyNameTrue').css('display', 'block');
 });
-$('.info').on('click','.modifyNameTrue',function(){
-                let newName=$(this).prev().prev().val();
-                console.log(newName);
-                $.ajax({
-                    url:'/modifyName',
-                    type:'POST',
-                    dataType:'JSON',
-                    data:{uid,newName},
-                    success:data=>{
-                        console.log(data);
-                        if(data.code==200){
-                            window.location.reload()
-                        }
-                    },
-                    err:err=>{
-                        console.log('err');
-                    }
-                })
+$('.info').on('click', '.modifyNameTrue', function () {
+    let newName = $(this).prev().prev().val();
+    console.log(newName);
+    $.ajax({
+        url: '/modifyName',
+        type: 'POST',
+        dataType: 'JSON',
+        data: { uid, newName },
+        success: data => {
+            console.log(data);
+            if (data.code == 200) {
+                window.location.reload()
+            }
+        },
+        err: err => {
+            console.log('err');
+        }
+    })
 
 });
 //跳转订单页面
-$('.info').on('click','.userOrder',function(){
-    location.href='../pages/order.html';
+$('.info').on('click', '.userOrder', function () {
+    location.href = '../pages/order.html';
 });
-$('.info').on('click','.userCar',function(){
-    location.href='../pages/cart.html';
+$('.info').on('click', '.userCar', function () {
+    location.href = '../pages/cart.html';
 });
