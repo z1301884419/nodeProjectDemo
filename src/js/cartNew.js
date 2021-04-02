@@ -25,7 +25,7 @@ $.ajax({
                 <div>
                     <div class="product_image"><img src="..${item.i_src}"></div>
                 </div>
-                <div class="product_name"><a href="javascript:;">${item.p_name}</a></div>
+                <div class="product_name" data-cid=${item.c_pid}><a href="javascript:;">${item.p_name}</a></div>
             </div>
             <div class="product_size text-lg-center product_text"><span>Size: </span>${item.c_size} </div>
             <div class="product_price text-lg-center product_text"><span>Price: </span>￥${item.p_price}</div>
@@ -149,9 +149,8 @@ $(".cart_items_list").on("click", ".qty_sub", function () {
     let add_or_sub = false
     console.log(add_or_sub);
     let numCount = parseInt($(this).siblings(".product_num").text());
-    // console.log(numCount);
     numCount--;
-    numCount = numCount < 1 ? 1 : numCount
+    numCount = numCount < 1 ? 1 : numCount;
     $(this).siblings(".product_num").text(numCount)
     total_data.push({
         "id": $(this).attr("data-cid") + '',
@@ -174,8 +173,14 @@ $(".cart_items_list").on("click", ".qty_sub", function () {
             $(this).parents(".product_quantity_container").siblings(".product_total").text(data.data.result)
             if ($(this).parents(".product_quantity_container").siblings(".product_color").children(".checkBox").prop("checked")) {
                 if (numCount > 1) {
+                    // console.log(numCount);
                     total -= parseFloat(data.data.items[0].p_price)
+                    // console.log(total);
+                } else if(numCount == 1) {
+                    total = total - parseFloat(data.data.items[0].p_price);
+                    // $(this).
                 }
+                // console.log(total);
                 $(".totalAccount").text(total)
             }
         },
@@ -184,7 +189,6 @@ $(".cart_items_list").on("click", ".qty_sub", function () {
         }
     })
 })
-
 
 // 全选和全不选
 $(".checkboxAll").change(function () {
@@ -203,7 +207,7 @@ $(".checkboxAll").change(function () {
                 total_data: total_data
             },
             success: data => {
-                // console.log(data);
+                console.log(data);
                 $(".totalAccount").text(data.data)
             },
             error: () => {
@@ -231,8 +235,7 @@ $(".checkOut").on("click", () => {
         },
         success: data => {
             console.log(data);
-            $(".total_amount").text(data.data.total);
-            let code = data.data.code
+            $(".total_amount").text(data.data.total)
             // 点击支付修改状态
             $(".cartPayment").on('click', () => {
                 $.ajax({
@@ -240,7 +243,7 @@ $(".checkOut").on("click", () => {
                     type: 'POST',
                     dataType: 'json',
                     data: {
-                        o_code: code
+                        o_code: data.data.code
                     },
                     success: data => {
                         console.log(data);
@@ -255,6 +258,12 @@ $(".checkOut").on("click", () => {
             console.log('出错啦!!!');
         }
     })
+})
+
+// 跳转商品详情
+$('.cart_items_list').on('click','.product_name',function(){
+    let id=$(this).attr('data-cid');
+    location.href=`../pages/product.html?shop_id=${id}`;
 })
 
 
