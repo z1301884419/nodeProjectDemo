@@ -13,6 +13,8 @@ cartRouter.get('/searchCart', cartcontrol.searchCart);
 
 cartRouter.get('/checkOutSelect', cartcontrol.checkOutSelect);
 
-cartRouter.post('/checkOut', cartcontrol.checkOut)
+cartRouter.post('/modifyPaymentState', cartcontrol.modifyPaymentState);
+
+cartRouter.get('/checkAll', cartcontrol.checkAll);
 
 module.exports = cartRouter;
