@@ -1,5 +1,7 @@
 const {Router} = require('express')
 const yyRouter = new (Router)
 const yyCtrl = require('../controller/yyCtrl')
-yyRouter.get('/shopInfo',yyCtrl.selectInfo)
+yyRouter.get('/shopInfo_hot',yyCtrl.hot_Info)
+yyRouter.get('/shopInfo_sale',yyCtrl.sale_Info)
+yyRouter.get('/shopInfo_new',yyCtrl.new_Info)
 module.exports = yyRouter
