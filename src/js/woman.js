@@ -1,163 +1,94 @@
-window.onload = function() {
-    console.log(12);
-    selectData()
-}
-
-
-function selectData() {
-    $.ajax({
-        method: 'get',
-        url: '/selectWoman',
-        // data: {
-
-        // },
-        success(data) {
-            if (data.code == 200) {
-                showData(data.data);
-
-            } else {
-                // console.log(data);
+$.ajax({
+    url: '/getAllData',
+    type: 'get',
+    dataType: 'JSON',
+    success: function (data) {
+        for (let i = 0; i < data.data.length; i++) {
+            for (let j = i + 1; j < data.data.length; j++) {
+                if (data.data[i].p_id == data.data[j].p_id) {
+                    data.data.splice(j, 1);
+                    j--;
+                }
             }
-        }
-    })
-
-}
-
-function selectPage() {
-    $.ajax({
-        method: 'get',
-        url: '/selectPage',
-
-        success(data) {
-            // console.log(data);
-            if (data.code == 200) {
-                console.log(data.data[0]['count(*)']);
-                showPage('#pageBox', data.data[0]['count(*)'])
+        };
+        let allArr=[...data.data];
+        console.log(allArr);
+        $('.parentNode').html('');
+        $.each(allArr,(i,item)=>{
+            //2新品，3热门，4打折，5正常
+            if(item.p_status==2){
+                $('.parentNode').append(`
+                <div class="product grid-item new itemBox">
+					<div class="product_inner">
+						<div class="product_image">
+							<img src="..${item.i_src}" alt="">
+						<div class="product_tag">new</div>
+					</div>
+					<div class="product_content text-center">
+					<div class="product_title"><a href="product.html">${item.p_name}</a></div>
+					<div class="product_price">$${item.p_price}</div>
+					    <div class="product_button ml-auto mr-auto trans_200">
+                            <a href="javascript:;">add to cart</a>
+                        </div>
+					</div>
+					</div>
+				</div>
+                `)
+            }else if(item.p_status==3){
+                $('.parentNode').append(`
+                <div class="product grid-item hot itemBox">
+					<div class="product_inner">
+						<div class="product_image">
+							<img src="..${item.i_src}" alt="">
+						<div class="product_tag">hot</div>
+					</div>
+					<div class="product_content text-center">
+					<div class="product_title"><a href="product.html">${item.p_name}</a></div>
+					<div class="product_price">$${item.p_price}</div>
+					    <div class="product_button ml-auto mr-auto trans_200">
+                            <a href="javascript:;">add to cart</a>
+                        </div>
+					</div>
+					</div>
+				</div>
+                `)
+            }else if(item.p_status==4){
+                $('.parentNode').append(`
+                <div class="product grid-item sale itemBox">
+					<div class="product_inner">
+						<div class="product_image">
+							<img src="..${item.i_src}" alt="">
+						<div class="product_tag">sale</div>
+					</div>
+					<div class="product_content text-center">
+					<div class="product_title"><a href="product.html">${item.p_name}</a></div>
+					<div class="product_price">$${item.p_price}</div>
+					    <div class="product_button ml-auto mr-auto trans_200">
+                            <a href="javascript:;">add to cart</a>
+                        </div>
+					</div>
+					</div>
+				</div>
+                `)
+            }else if(item.p_status==5){
+                $('.parentNode').append(`
+                <div class="product grid-item itemBox">
+					<div class="product_inner">
+						<div class="product_image">
+							<img src="..${item.i_src}" alt="">
+						</div>
+                    </div>
+					<div class="product_content text-center">
+					    <div class="product_title"><a href="product.html">${item.p_name}</a></div>
+					    <div class="product_price">$${item.p_price}</div>
+					        <div class="product_button ml-auto mr-auto trans_200">
+                                <a href="javascript:;">add to cart</a>
+                            </div>
+					    </div>
+					</div>
+				</div>
+                `)
             }
-        }
-    })
-}
-
-
-
-
-function showData(obj) {
-    let arr = []
-    obj.forEach(item => {
-        arr.push(item.p_id)
-
-    });
-    selectimg(arr)
-
-}
-
-function selectimg(obj) {
-    $.ajax({
-        url: '/selectWomanImg',
-        method: 'get',
-        data: {
-            obj
-        },
-        success(data) {
-            if (data.code == 200) {
-                console.log(data.data)
-                showimg(data.data)
-            } else {
-                console.log(data)
-            }
-        }
-    })
-}
-
-function showimg(obj) {
-    $('#bigBox').html('')
-    for (let i = 0; i < obj.length; i++) {
-        $('#bigBox').append(`
-        <div class="product grid-item mybox">
-            <div class="product_inner">
-                <div class="product_image"><img src="..${obj[i].i_src}" alt=""></div>
-                <div class="product_content text-center">
-                    <div class="product_title"><a href="product.html">${obj[i].p_name}</a></div>
-                    <div class="product_price">$${obj[i].p_price}</div>
-                    <div class="product_button ml-auto mr-auto trans_200"><a href="javascript:;">加入购物车</a></div>
-                </div>
-            </div>
-        </div>
-        `)
+        })
     }
-}
-
-$('#remen,.remen').click(function() {
-    $(this).css('backgroundColor', '#bbe432').siblings().css('backgroundColor', 'white')
-    let num = 3
-    $.ajax({
-        url: '/selectClass',
-        method: 'get',
-        data: {
-            num
-        },
-        success(data) {
-            if (data.code == 200) {
-                console.log(data)
-                showshangpin(data.data)
-            } else {
-                console.log(data)
-                alert('无此商品')
-            }
-        }
-    })
 })
-$('#xinpin,.xinpin').click(function() {
-    $(this).css('backgroundColor', '#bbe432').siblings().css('backgroundColor', 'white')
-    let num = 2
-    $.ajax({
-        url: '/selectClass',
-        method: 'get',
-        data: { num },
-        success(data) {
-            if (data.code == 200) {
-                console.log(data)
-                showshangpin(data.data)
-            } else {
-                console.log(data)
-                alert('无此商品')
-            }
-        }
-    })
-})
-$('#zhekou,.zhekou').click(function() {
-    $(this).css('backgroundColor', '#bbe432').siblings().css('backgroundColor', 'white')
-    let num = 4
-    $.ajax({
-        url: '/selectClass',
-        method: 'get',
-        data: { num },
-        success(data) {
-            if (data.code == 200) {
-                console.log(data)
-                showshangpin(data.data)
-            } else {
-                console.log(data)
-                alert('无此商品')
-            }
-        }
-    })
-})
-
-function showshangpin(obj) {
-    $('#bigBox').html('')
-    for (let i = 0; i < obj.length; i++) {
-        $('#bigBox').append(`
-        <div class="product grid-item mybox">
-            <div class="product_inner">
-                <div class="product_image"><img src="..${obj[i].i_src}" alt=""></div>
-                <div class="product_content text-center">
-                    <div class="product_title"><a href="product.html">${obj[i].p_name}</a></div>
-                    <div class="product_price">$${obj[i].p_price}</div>
-                    <div class="product_button ml-auto mr-auto trans_200"><a href="javascript:;">加入购物车</a></div>
-                </div>
-            </div>
-        </div>
-        `)
-    }
-}
