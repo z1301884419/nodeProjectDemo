@@ -1,17 +1,12 @@
 
 
 window.onload = function(){
-    console.log(111)
     xuanranyemian()
 }
 function xuanranyemian(){
     $.ajax({
         url:'/selectMan',
         method:'get',
-        
-        // data:{
-
-        // },
         success(data){
             if(data.code == 200){
                 showMan(data.data)
@@ -20,7 +15,6 @@ function xuanranyemian(){
             }
         }
     })
-    // console.log(123)
 }
 
 function showMan(obj){
@@ -39,7 +33,6 @@ function selectimg(obj){
         },
         success(data){
             if(data.code == 200){
-                console.log(data.data)
                 showmyimg(data.data)
             }else{
                 console.log(data)
@@ -58,7 +51,7 @@ function showmyimg(obj){
                 <div class="product_content text-center">
                     <div class="product_title"><a href="product.html">${obj[i].p_name}</a></div>
                     <div class="product_price">$${obj[i].p_price}</div>
-                    <div class="product_button ml-auto mr-auto trans_200"><a href="javascript:;">加入购物车</a></div>
+                    <div class="product_button ml-auto mr-auto trans_200 addmyce"><a href="javascript:;">加入购物车</a></div>
                 </div>
             </div>
         </div>
@@ -77,10 +70,8 @@ $('#remen,.remen').click(function(){
         },
         success(data){
             if(data.code==200){
-                console.log(data)
                 showshangpin(data.data)
             }else{
-                console.log(data)
                 alert('没有查找到，SORRY')
             }
         }
@@ -95,10 +86,8 @@ $('#xinpin,.xinpin').click(function(){
         data:{num},
         success(data){
             if(data.code==200){
-                console.log(data.data)
                 showshangpin(data.data)
             }else{
-                console.log(data)
                 alert('没有查找到，SORRY')
             }
         }
@@ -113,10 +102,8 @@ $('#zhekou,.zhekou').click(function(){
         data:{num},
         success(data){
             if(data.code==200){
-                console.log(data)
                 showshangpin(data.data)
             }else{
-                console.log(data)
                 alert('没有查找到，SORRY')
             }
         }
@@ -138,10 +125,19 @@ function showshangpin(obj){
                 <div class="product_content text-center">
                     <div class="product_title"><a href="product.html">${obj[i].p_name}</a></div>
                     <div class="product_price">$${obj[i].p_price}</div>
-                    <div class="product_button ml-auto mr-auto trans_200"><a href="javascript:;">加入购物车</a></div>
+                    <div class="product_button ml-auto mr-auto trans_200 addmyce"><a href="javascript:;">加入购物车</a></div>
                 </div>
             </div>
         </div>
         `
     }
 }
+
+$('#zhong,#xiao,#da').click(function(){
+    console.log(1233)
+    $(this).css('backgroundColor','#389B39').siblings().css('backgroundColor','white')
+})
+
+$('#addmyce').click(function(){
+    console.log(this)
+})
