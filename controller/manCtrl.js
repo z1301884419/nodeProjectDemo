@@ -19,7 +19,7 @@ module.exports = {
             }
         })
     },
-    selectManImg(req,resp){
+    async selectManImg(req,resp){
         let arr = req.query.obj
         let sql ='select * from (ImageTable join producttable on p_id=i_pid) join kindtable on k_id=p_kind where k_id=1 '
         for(let i=0;i<arr.length;i++){
@@ -74,5 +74,21 @@ module.exports = {
                         })
                     } 
         })  
+    },
+    async selectcar(req,resp){
+        let shangpinname = req.query.shangpinname
+        let username = req.query.username
+        let sql = 'SELECT  p_id FROM producttable WHERE p_name = ?'
+        let sql1 = 'SELECT  u_id FROM usertable WHERE u_name = ?' 
+        let shangid = await dbDao.selectInfo(sql,shangpinname)
+        let userid = await dbDao.selectInfo(sql1,username)
+        if(shangid.code==200&&userid.code==200){
+            let data = {
+                code:200,
+                s_id:shangid.data[0].p_id,
+                u_id:userid.data[0].u_id
+            }
+            resp.send(data)
+        }
     }
 }
