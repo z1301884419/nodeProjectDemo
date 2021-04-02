@@ -1,6 +1,8 @@
 .product-box{
   display: flex;
   margin-top: 50px;
+  justify-content: space-around;
+  position: relative;
 }
 .product_image{
    height: 70%;
@@ -26,18 +28,19 @@
 .toRight,.toLeft{
   width: 50px;
   height: 40px;
-  position: relative;
+  position: absolute;
   top: 120px;
+  z-index: 5;
 }
 .toRight:hover,.toLeft:hover{
   box-sizing: border-box;
   border: 3px solid rgb(187,228,50);
 }
 .toLeft{
-  left: 10px;
+  left: -40px;
 }
 .toRight{
-  right: 10px;
+  right: -40px;
 }
 .toRight img,.toLeft img{
   width: 100%;
