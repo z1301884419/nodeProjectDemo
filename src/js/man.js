@@ -61,7 +61,7 @@ function showmyimg(obj){
 				<div class="product_content text-center">
 				    <div class="product_title"><a href="product.html">${item.p_name}</a></div>
 				    <div class="product_price">${item.p_price}</div>
-				    <div class="product_button ml-auto mr-auto trans_200"><a href="/pages/product.html?&shop_id=${item.p_id}">加入购物车</a></div>
+				    <div class="product_button ml-auto mr-auto trans_200"><a href="/pages/product.html?shop_id=${item.p_id}">加入购物车</a></div>
 				</div>
 			</div>
 		</div>
