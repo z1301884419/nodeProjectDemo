@@ -20,7 +20,7 @@ function shops (shop_data,renderNode,statu){
                       <div class="product_content text-center">
                         <div class="product_title"><a href="product.html">${shop_data[i].p_name}</a></div>
                         <div class="product_price">$${shop_data[i].p_price}</div>
-                        <div class="product_button ml-auto mr-auto trans_200" data-toggle="modal" data-target="#exampleModal"><a href="javascript:;">加入购物车</a></div>
+                        <div class="product_button ml-auto mr-auto trans_200" data-toggle="modal" data-target="#exampleModal"><span class="to_more" style="display: none">${shop_data[i].p_id}</span><a href="javascript:;">加入购物车</a></div>
                       </div>
                   </div>
       `)
@@ -78,35 +78,57 @@ function newshop(nowpage){
 hotshop(h_nowpage)
 saleshop(s_nowpage)
 newshop(n_nowpage)
-$('.toRight').click(next)
+
+let isClick = false
+
 //下一页
+$('.toRight').click(next)
 function next() {
-  if($(this).parent().attr('class')=="product-box hot_shop"){
-    h_nowpage>=h_maxpage?h_nowpage=h_maxpage:h_nowpage++;
-    hotshop(h_nowpage)
+  if(!isClick){
+    isClick = true
+    if($(this).parent().attr('class')=="product-box hot_shop"){
+      h_nowpage>=h_maxpage?h_nowpage=h_maxpage:h_nowpage++;
+      hotshop(h_nowpage)
+    }
+    if($(this).parent().attr('class')=="product-box sale_shop"){
+      s_nowpage>=s_maxpage?s_nowpage=s_maxpage:s_nowpage++;
+      saleshop(s_nowpage)
+    }
+    if($(this).parent().attr('class')=="product-box new_shop"){
+      n_nowpage>=n_maxpage?n_nowpage=n_maxpage:n_nowpage++;
+      newshop(n_nowpage)
+    }
+    setTimeout(()=>{
+      isClick = false
+    },500)
   }
-  if($(this).parent().attr('class')=="product-box sale_shop"){
-    s_nowpage>=s_maxpage?s_nowpage=s_maxpage:s_nowpage++;
-    saleshop(s_nowpage)
-  }
-  if($(this).parent().attr('class')=="product-box new_shop"){
-    n_nowpage>=n_maxpage?n_nowpage=n_maxpage:n_nowpage++;
-    newshop(n_nowpage)
-  }
+
 }
 //上一页
 $('.toLeft').click(prev)
 function prev() {
-  if($(this).parent().attr('class')=="product-box hot_shop"){
-    h_nowpage<=1?h_nowpage=1:h_nowpage--;
-    hotshop(h_nowpage)
-  }
-  if($(this).parent().attr('class')=="product-box sale_shop"){
-    s_nowpage<=1?s_nowpage=1:s_nowpage--;
-    saleshop(s_nowpage)
-  }
-  if($(this).parent().attr('class')=="product-box new_shop"){
-    n_nowpage<=1?n_nowpage=1:n_nowpage--;
-    newshop(n_nowpage)
+  if(!isClick){
+    isClick = true
+    if($(this).parent().attr('class')=="product-box hot_shop"){
+      h_nowpage<=1?h_nowpage=1:h_nowpage--;
+      hotshop(h_nowpage)
+    }
+    if($(this).parent().attr('class')=="product-box sale_shop"){
+      s_nowpage<=1?s_nowpage=1:s_nowpage--;
+      saleshop(s_nowpage)
+    }
+    if($(this).parent().attr('class')=="product-box new_shop"){
+      n_nowpage<=1?n_nowpage=1:n_nowpage--;
+      newshop(n_nowpage)
+    }
+    setTimeout(()=>{
+      isClick = false
+    },500)
   }
 }
+
+//添加至购物车
+$('.products').on('click','.grid-item',function () {
+  let shop_id = $(this).find('.to_more').html();
+  location.href = `../pages/product.html?&shop_id=${shop_id}`
+})

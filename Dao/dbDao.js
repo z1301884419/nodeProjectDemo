@@ -14,7 +14,7 @@ module.exports = {
   insertInfo(sql,arr){
     return new Promise(((resolve, reject) => {
       dbdao.DB(sql,arr,(err,data)=>{
-        err?resolve({code:500,msg:"数据库语句错误",err}):resolve({code:200,msg:"查询成功",data})
+        err?resolve({code:500,msg:"数据库语句错误",err}):resolve({code:200,msg:"添加成功",data})
       })
     }))
   },
@@ -22,7 +22,7 @@ module.exports = {
   deleteInfo(sql,arr){
     return new Promise(((resolve, reject) => {
       dbdao.DB(sql,arr,(err,data)=>{
-        err?resolve({code:500,msg:"数据库语句错误",err}):resolve({code:200,msg:"查询成功",data})
+        err?resolve({code:500,msg:"数据库语句错误",err}):resolve({code:200,msg:"删除成功",data})
       })
     }))
   },
@@ -30,7 +30,7 @@ module.exports = {
   updateInfo(sql,arr){
     return new Promise(((resolve, reject) => {
       dbdao.DB(sql,arr,(err,data)=>{
-        err?resolve({code:500,msg:"数据库语句错误",err}):resolve({code:200,msg:"查询成功",data})
+        err?resolve({code:500,msg:"数据库语句错误",err}):resolve({code:200,msg:"修改成功",data})
       })
     }))
   }
