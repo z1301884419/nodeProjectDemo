@@ -1,0 +1,29 @@
+.product_content_inner{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -50px;
+}
+.shop_img{
+  margin:10px;
+  width: 40%;
+  height: 300px;
+  overflow: hidden;
+}
+.shop_img img{
+  width: 100%;
+}
+.clicked{
+  color: rgb(187,228,50);
+}
+.product_size_list{
+  position: relative;
+}
+.tishi_size{
+  position: absolute;
+  letter-spacing: 5px;
+  color: red;
+  font-weight: bold;
+  top: -30px;
+  display: none;
+}
