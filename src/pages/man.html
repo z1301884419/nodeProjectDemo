@@ -14,6 +14,8 @@
 	<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
 	<link rel="stylesheet" type="text/css" href="../styles/categories.css">
 	<link rel="stylesheet" type="text/css" href="../styles/categories_responsive.css">
+	<link rel="stylesheet" href="./tools/font/iconfont.css">
+	<link rel="stylesheet" href="../styles/lilingLogin.css">
 </head>
 <style>
 	.pageBox {
@@ -37,7 +39,7 @@
 		color: white;
 	}
 
-	#bigssss .mybox{
+	#bigssss .mybox {
 		float: left;
 	}
 </style>
@@ -108,6 +110,36 @@
 			</div>
 		</div>
 
+		<!-- 登录模态框 -->
+		<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel" style="color: green;">LOGIN</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label">账号:</label>
+								<input type="text" name="userName" class="form-control" id="recipient-name">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">密码:</label>
+								<input type="password" name="userPwd" class="form-control" id="message-text">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-success loginTrue" data-dismiss="modal">登录</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- Home -->
 
 		<div class="home">
@@ -196,7 +228,8 @@
 											<div class="isotope_filter_text"><span>筛选</span><i class="fa fa-caret-down"
 													aria-hidden="true"></i></div>
 											<ul>
-												<li class="item_filter_btn" data-filter="*"><a href="./man.html">全部</a></li>
+												<li class="item_filter_btn" data-filter="*"><a href="./man.html">全部</a>
+												</li>
 												<li class="remen" class="item_filter_btn" data-filter=".hot">热门</li>
 												<li class="xinpin" class="item_filter_btn" data-filter=".new">新品</li>
 												<li class="zhekou" class="item_filter_btn" data-filter=".sale">折扣</li>
@@ -508,7 +541,7 @@
 									<div class="credits_text">
 										Copyright &copy;
 										<script>document.write(new Date().getFullYear());</script> - 第三组
-										
+
 									</div>
 								</div>
 							</div>
@@ -534,6 +567,7 @@
 	<script src="../plugins/Isotope/isotope.pkgd.min.js"></script>
 	<script src="../plugins/Isotope/fitcolumns.js"></script>
 	<script src="../js/categories.js"></script>
+	<script src="js/login.js"></script>
 	<script src="../js/man.js"></script>
 </body>
 

@@ -97,18 +97,13 @@ $('.info').on('click','.exitLogin',function(){
     })
 });
 //点击修改名称
-let uid=0;
 $('.info').on('click','.modifyName',function(){
     $(this).prev().removeAttr('disabled').focus();
-    uid=$(this).attr('data-id');
+    let uid=$(this).attr('data-id');
     $(this).css('display','none')
     $('.modifyNameTrue').css('display','block');
 });
 $('.info').on('click','.modifyNameTrue',function(){
-    // $(this).prev().removeAttr('disabled').focus();
-    // uid=$(this).attr('data-id');
-    // $(this).css('display','none')
-    // $('.modifyNameTrue').css('display','block');
                 let newName=$(this).prev().prev().val();
                 console.log(newName);
                 $.ajax({
@@ -128,6 +123,4 @@ $('.info').on('click','.modifyNameTrue',function(){
                 })
 
 });
-// if(flag){
-//    
-// }
+//
