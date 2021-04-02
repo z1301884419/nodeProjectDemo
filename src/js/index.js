@@ -130,5 +130,5 @@ function prev() {
 //添加至购物车
 $('.products').on('click','.grid-item',function () {
   let shop_id = $(this).find('.to_more').html();
-  location.href = `../pages/product.html?&shop_id=${shop_id}`
+  location.href = `../pages/product.html?shop_id=${shop_id}`
 })

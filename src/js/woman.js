@@ -18,7 +18,7 @@ $.ajax({
             //2新品，3热门，4打折，5正常
             if(item.p_status==2){
                 $('.parentNode').append(`
-                <div class="product grid-item new itemBox">
+                <div class="product grid-item new itemBox" data-id="${item.i_pid}">
 					<div class="product_inner">
 						<div class="product_image">
 							<img src="..${item.i_src}" alt="">
@@ -36,7 +36,7 @@ $.ajax({
                 `)
             }else if(item.p_status==3){
                 $('.parentNode').append(`
-                <div class="product grid-item hot itemBox">
+                <div class="product grid-item hot itemBox" data-id="${item.i_pid}">
 					<div class="product_inner">
 						<div class="product_image">
 							<img src="..${item.i_src}" alt="">
@@ -54,7 +54,7 @@ $.ajax({
                 `)
             }else if(item.p_status==4){
                 $('.parentNode').append(`
-                <div class="product grid-item sale itemBox">
+                <div class="product grid-item sale itemBox" data-id="${item.i_pid}">
 					<div class="product_inner">
 						<div class="product_image">
 							<img src="..${item.i_src}" alt="">
@@ -72,7 +72,7 @@ $.ajax({
                 `)
             }else if(item.p_status==5){
                 $('.parentNode').append(`
-                <div class="product grid-item itemBox">
+                <div class="product grid-item itemBox" data-id="${item.i_pid}">
 					<div class="product_inner">
 						<div class="product_image">
 							<img src="..${item.i_src}" alt="">
@@ -91,4 +91,8 @@ $.ajax({
             }
         })
     }
+});
+$('.parentNode').on('click','.itemBox',function(){
+    let id=$(this).attr('data-id');
+    location.href = `../pages/product.html?shop_id=${id}`
 })

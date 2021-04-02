@@ -89,7 +89,7 @@ $(document).ready(function()
 
 
 //通过传过来的商品id渲染数据
-let shop_id = location.search.replace('?&shop_id=',"")
+let shop_id = location.search.replace('?shop_id=',"")
 console.log(shop_id);
 $.ajax({
 	url:'/yy_shopInfo',
@@ -99,7 +99,6 @@ $.ajax({
 		shop_id
 	},
 	success(data) {
-		console.log(data);
 		//渲染
 		data.imgs.forEach((value,index)=>{
 			$('.product_content_inner').append(`
