@@ -57,9 +57,16 @@ async new_Info(req,resp){
     if(req.session.user) {
       let user = req.session.user
       let u_id = user.u_id
-      //添加至购物车
-      let obj = await dbDao.insertInfo('insert into cart value(null,?,?,?,1,?)', [shop_id, u_id, shop_size, shop_price])
-      resp.send(obj)
+      //查找数据库改用户是否已经购买了此商品
+      let obj_s = await dbDao.selectInfo('select * from cart where c_uid=? and c_size=? and c_pid=?', [u_id,shop_size,shop_id])
+      if(obj_s.data.length<1){
+        //添加至购物车
+        let obj = await dbDao.insertInfo('insert into cart value(null,?,?,?,1,?)', [shop_id, u_id, shop_size, shop_price])
+        resp.send(obj)
+      }else {
+        let obj_c = await dbDao.updateInfo('update cart set c_number=c_number+1 where c_pid = ?', [shop_id])
+        resp.send(obj_c)
+      }
     }else {
       resp.send({code:204,msg:"用户未登录"})
     }

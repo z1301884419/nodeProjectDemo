@@ -141,9 +141,7 @@ $.ajax({
 						shop_price:$('.product_price').html().slice(1)
 					},
 					success(data) {
-						console.log(data);
 						if(data.code==200){
-							console.log(11);
 						}else {
 							$('.tishi_modal').css("display","block")
 							$('.tishi_box').css("display","block")
