@@ -1,5 +1,5 @@
 const mysql = require('mysql')
-const dbdao = require('../config/dbConfig')
+const dbdao = require('../config/dbConfig');
 
 module.exports = {
   //查询数据库

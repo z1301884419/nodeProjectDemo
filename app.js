@@ -17,7 +17,7 @@ app.use(session({
     name: 'pro3data',
     secret: '1234',
     cookie: {
-        maxAge: 6000
+        maxAge: 6000*60*24
     },
     resave: true,//每次请求都重置session cookie
     saveUninitialized: true,//无论有没有session都会设置一个默认空对象
