@@ -21,7 +21,7 @@ $.ajax({
                 <div class="caozuo">
                     <div><span class="iconfont icon-shoucang"></span>我的收藏</div>
                     <div class="userOrder"><span class="iconfont icon-dingdan1"></span>我的订单</div>
-                    <div><span class="iconfont icon-gouwuche"></span>我的购物车</div>
+                    <div class="userCar"><span class="iconfont icon-gouwuche"></span>我的购物车</div>
                     <div><span class="iconfont icon-zuji"></span>我浏览的</div>
                     <div class="exitLogin"><span class="iconfont icon-0tuichudenglu-05"></span>退出登录</div>
                 </div>
@@ -63,7 +63,7 @@ $('.loginTrue').on('click', function () {
                 <div class="caozuo">
                     <div><span class="iconfont icon-shoucang"></span>我的收藏</div>
                     <div class="userOrder"><span class="iconfont icon-dingdan1"></span>我的订单</div>
-                    <div><span class="iconfont icon-gouwuche"></span>我的购物车</div>
+                    <div class="userCar"><span class="iconfont icon-gouwuche"></span>我的购物车</div>
                     <div><span class="iconfont icon-zuji"></span>我浏览的</div>
                     <div class="exitLogin"><span class="iconfont icon-0tuichudenglu-05"></span>退出登录</div>
                 </div>
@@ -126,4 +126,7 @@ $('.info').on('click','.modifyNameTrue',function(){
 //跳转订单页面
 $('.info').on('click','.userOrder',function(){
     location.href='../pages/order.html';
-})
+});
+$('.info').on('click','.userCar',function(){
+    location.href='../pages/cart.html';
+});
