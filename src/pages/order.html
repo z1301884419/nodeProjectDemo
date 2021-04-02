@@ -136,9 +136,9 @@
 		<div class="cart_section">
 			<div class="section_container">
 				<div style="margin-bottom: 20px;">
-					<button type="button" class="btn btn-outline-secondary">全部订单</button>
-					<button type="button" class="btn btn-outline-secondary">待付款</button>
-					<button type="button" class="btn btn-outline-secondary">待收货</button>
+					<button type="button" class="btn btn-outline-secondary" onclick='xuanran()'>全部订单</button>
+					<button type="button" class="btn btn-outline-secondary" onclick="fukuan()">待付款</button>
+					<button type="button" class="btn btn-outline-secondary" onclick="shouhuo()">待收货</button>
 				</div>
 				<div class="container">
 					<div class="row">
@@ -157,38 +157,27 @@
 										<li>操作</li>
 									</ul>
 								</div>
-
-
-								<div class="cart_items" style="overflow: hidden;">
-									<!-- <ul class="cart_items_list"
-										style="overflow: hidden; border-bottom: 1px solid rgb(189, 187, 187); margin-top: 20px;">
+								<div class="cart_items" style="overflow: hidden; border: 0;">
+									<!-- <ul class="cart_items_list" style="overflow: hidden; margin-top: 20px;">
 										<div>订单编号：<span>636126738</span></div>
-										<li
-											class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-											<div
-												class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+										<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+											<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
 												<div>
-													<div class="product_image"><img src="../images/cart_1.jpg" alt="">
-													</div>
+													<div class="product_image"><img src="../images/cart_1.jpg" alt=""></div>
 												</div>
 												<div class="product_name"><a href="product.html">棕色背包</a></div>
 											</div>
-											<div class="product_size text-lg-center product_text"><span>Size: </span>One
-												Size</div>
-											<div class="product_price text-lg-center product_text"><span>Price:
-												</span>$19.50</div>
+											<div class="product_size text-lg-center product_text"><span>Size: </span>One Size</div>
+											<div class="product_price text-lg-center product_text"><span>Price: </span>$19.50</div>
 											<div class="product_quantity_container">
 												<div class="product_quantity ml-lg-auto mr-lg-auto text-center">
 													<span class="product_text product_num">1</span>
 												</div>
 											</div>
-											<div class="product_total text-lg-center product_text"><span>Total:
-												</span>$19.50</div>
-											<div class="product_total text-lg-center product_text"><a href="#">修改地址</a>
-											</div>
+											<div class="product_total text-lg-center product_text"><span>Total: </span>$19.50</div>
+											<div class="product_total text-lg-center product_text"><a href="#">修改地址</a></div>
 										</li>
-										<li
-											class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+										<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
 											<div
 												class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
 												<div>
@@ -215,44 +204,81 @@
 											<button type="button" class="btn btn-success">去支付</button>
 										</div>
 									</ul>
-									<ul class="cart_items_list"
-										style="overflow: hidden; border-bottom: 1px solid rgb(189, 187, 187); margin-top: 20px;">
+									<hr />
+									<ul class="cart_items_list" style="overflow: hidden; margin-top: 20px;">
 										<div>订单编号：<span>6345126738</span></div>
-									
-									
-										<li
-											class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-											<div
-												class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-												<div>
-													<div class="product_image"><img src="../images/cart_1.jpg" alt="">
+										<div class="itemNode">
+											<li
+												class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+												<div
+													class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+													<div>
+														<div class="product_image"><img src="../images/cart_1.jpg"
+																alt="">
+														</div>
+													</div>
+													<div class="product_name"><a href="product.html">棕色背包</a></div>
+												</div>
+												<div class="product_size text-lg-center product_text"><span>Size:
+													</span>One
+													Size</div>
+												<div class="product_price text-lg-center product_text"><span>Price:
+													</span>$19.50</div>
+												<div class="product_quantity_container">
+													<div class="product_quantity ml-lg-auto mr-lg-auto text-center">
+														<span class="product_text product_num">1</span>
 													</div>
 												</div>
-												<div class="product_name"><a href="product.html">棕色背包</a></div>
-											</div>
-											<div class="product_size text-lg-center product_text"><span>Size: </span>One
-												Size</div>
-											<div class="product_price text-lg-center product_text"><span>Price:
-												</span>$19.50</div>
-											<div class="product_quantity_container">
-												<div class="product_quantity ml-lg-auto mr-lg-auto text-center">
-													<span class="product_text product_num">1</span>
+												<div class="product_total text-lg-center product_text"><span>Total:
+													</span>$19.50</div>
+												<div class="product_total text-lg-center product_text"><a
+														href="#">退款</a>
 												</div>
-											</div>
-											<div class="product_total text-lg-center product_text"><span>Total:
-												</span>$19.50</div>
-											<div class="product_total text-lg-center product_text"><a href="#">退款</a>
-											</div>
-										</li>
+											</li> -->
+									<!-- </div>
 										<div style="float: right; margin-bottom: 10px;">
-									
+
 											<button type="button" class="btn btn-secondary">删除订单</button>
 										</div>
-									</ul> -->
-
+									</ul>
+									<hr />  -->
 
 								</div>
+								<div class="modal fade" id="exampleModal2" tabindex="-1"
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title cartPayment" id="exampleModalLabel">支付</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<div style="color: black;">
+													<h1 style="text-align: center; margin: 10px 0;">￥<span
+															class="orderTotal">2600</span></h1>
+													<div class="row" style="margin: 20px 0;">
+														<div class="col-6" style="text-align: left;">支付宝账号</div>
+														<div class="col-6 orderuName" style="text-align: right;">153******55</div>
+													</div>
+													<div class="row" style="margin: 20px 0;">
+														<div class="col-6" style="text-align: left;">付款方式</div>
+														<div class="col-6" style="text-align: right;">花呗</div>
+													</div>
+												</div>
+												<div style="text-align: center;">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal"
+														style="margin: 0 30px;">取消支付</button>
+													<button type="button" class="btn btn-primary orderPayTrue"
+														style="margin: 0 30px;" data-dismiss="modal">支付</button>
+												</div>
 
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -497,7 +523,7 @@
 		<script src="../js/login.js"></script>
 		<script src="../js/cart.js"></script>
 		<script src='../js/order.js'></script>
-		
+
 
 </body>
 
