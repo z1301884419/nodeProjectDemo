@@ -14,6 +14,9 @@
 	<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
 	<link rel="stylesheet" type="text/css" href="../styles/cart.css">
 	<link rel="stylesheet" type="text/css" href="../styles/cart_responsive.css">
+	<!-- 李玲的登录css -->
+	<link rel="stylesheet" href="../tools/font/iconfont.css">
+	<link rel="stylesheet" href="../styles/lilingLogin.css">
 </head>
 
 <body>
@@ -29,18 +32,17 @@
 		<div class="sidebar">
 
 			<!-- Info -->
-			<div class="info">
-				<div class="info_content d-flex flex-row align-items-center justify-content-start">
+			<!-- 李玲的登录按钮 -->
+			<div class="info" style="height: 40px;font-size: 16px;color: rgb(233, 232, 232);">
+				<div class="loginBox">
+					<div class="userNameInfo shou" style="display: none;"></div>
+				</div>
+				<div class="loginBox2">
+					<div class="loginBtn shou" data-toggle="modal" data-target="#staticBackdrop">登录</div>
+					<div class="registerBtn shou">注册</div>
+				</div>
+				<div class="userNode">
 
-					<!-- Language -->
-					<div class="info_languages has_children" style="margin-left: 20px;">
-						<div class="dropdown_text">登录</div>
-					</div>
-
-					<!-- Currency -->
-					<div class="info_currencies has_children">
-						<div class="dropdown_text">注册</div>
-					</div>
 				</div>
 			</div>
 
@@ -81,7 +83,36 @@
 				<div class="cart_price">$39.99</div>
 			</div>
 		</div>
-
+		<!-- 登录模态框 -->
+		<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel" style="color: green;">LOGIN</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label">账号:</label>
+								<input type="text" name="userName" class="form-control" id="recipient-name">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">密码:</label>
+								<input type="password" name="userPwd" class="form-control" id="message-text">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-success loginTrue" data-dismiss="modal">登录</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- Home -->
 
 		<div class="home">
@@ -114,7 +145,7 @@
 						<div class="col">
 							<div class="cart_container">
 
-					
+
 								<div class="cart_bar">
 									<ul
 										class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-start">
@@ -127,7 +158,7 @@
 									</ul>
 								</div>
 
-					
+
 								<div class="cart_items" style="overflow: hidden;">
 									<!-- <ul class="cart_items_list"
 										style="overflow: hidden; border-bottom: 1px solid rgb(189, 187, 187); margin-top: 20px;">
@@ -462,8 +493,12 @@
 		<script src="../plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 		<script src="../plugins/easing/easing.js"></script>
 		<script src="../plugins/parallax-js-master/parallax.min.js"></script>
+		<!-- 李玲的登录js -->
+		<script src="../js/login.js"></script>
 		<script src="../js/cart.js"></script>
 		<script src='../js/order.js'></script>
+		
+
 </body>
 
 </html>
