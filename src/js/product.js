@@ -129,7 +129,6 @@ $.ajax({
 		//确认添加
 		$('.cart_button').click(function (e) {
 			e.preventDefault()
-			console.log(shop_size_);
 			if(shop_size_){
 				$.ajax({
 					url: '/addCar',

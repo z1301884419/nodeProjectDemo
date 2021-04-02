@@ -61,10 +61,10 @@ async new_Info(req,resp){
       let obj_s = await dbDao.selectInfo('select * from cart where c_uid=? and c_size=? and c_pid=?', [u_id,shop_size,shop_id])
       if(obj_s.data.length<1){
         //添加至购物车
-        let obj = await dbDao.insertInfo('insert into cart value(null,?,?,?,1,?)', [shop_id, u_id, shop_size, shop_price])
+        let obj = await dbDao.insertInfo('insert into cart value(null,?,?,?,1,?,?)', [shop_id, u_id, shop_size, shop_price,shop_price])
         resp.send(obj)
       }else {
-        let obj_c = await dbDao.updateInfo('update cart set c_number=c_number+1 where c_pid = ?', [shop_id])
+        let obj_c = await dbDao.updateInfo('update cart set c_number=c_number+1,c_total=c_price*c_number where c_pid = ? and c_size=?', [shop_id,shop_size])
         resp.send(obj_c)
       }
     }else {
