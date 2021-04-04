@@ -130,3 +130,11 @@ $('.info').on('click', '.userOrder', function () {
 $('.info').on('click', '.userCar', function () {
     location.href = '../pages/cart.html';
 });
+//搜索功能
+$('.search_button').on('click',function(e){
+    e.preventDefault();
+    let searchVal=$('.search_input').val();
+    // sessionStorage.setItem('val',searchVal);
+    window.location = encodeURI(encodeURI(`../pages/search.html?searchVal=${searchVal}`))
+    // location.href=`../pages/search.html?searchVal=${searchVal}`
+})

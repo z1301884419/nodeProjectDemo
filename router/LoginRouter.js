@@ -6,6 +6,8 @@ LoginRouter.post('/login',ctrl.getLogin);
 LoginRouter.get('/userInfo',ctrl.getUser);
 LoginRouter.get('/loginOut',ctrl.loginOut);
 LoginRouter.post('/modifyName',ctrl.modifyName);
+LoginRouter.get('/searchPro',ctrl.searchPro);
+
 
 
 module.exports=LoginRouter

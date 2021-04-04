@@ -65,5 +65,24 @@ module.exports = {
             code: 200,
             msg: '更改成功',
         })
+    },
+    searchPro(req,res){
+        console.log(req.query.searchVal);
+        let value=req.query.searchVal;
+        llConfig.DB(
+            `SELECT * FROM producttable JOIN imagetable ON p_id=i_pid WHERE p_name LIKE '%${value}%'`,
+            [],
+            (err,data)=>{
+                if(!err){
+                    if(data.length>0){
+                        res.send({
+                            code:200,
+                            msg:'查询成功',
+                            data:data
+                        })
+                    }
+                }
+            }
+        )
     }
 }

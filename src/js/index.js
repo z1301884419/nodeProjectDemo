@@ -37,7 +37,6 @@ function hotshop(nowpage){
       nowpage
     },
     success(data){
-      console.log(data);
       h_maxpage=data.maxpage
       shops(data.data,'.hot_shop','hot')
     }
@@ -53,7 +52,6 @@ function saleshop(nowpage){
       nowpage
     },
     success(data){
-      console.log(data);
       s_maxpage=data.maxpage
       shops(data.data,'.sale_shop','sale')
     }
@@ -69,7 +67,6 @@ function newshop(nowpage){
       nowpage
     },
     success(data){
-      console.log(data);
       n_maxpage=data.maxpage
       shops(data.data,'.new_shop','new')
     }
