@@ -8,7 +8,7 @@ $.ajax({
         if (data.user != undefined) {
             $('.loginBox2').css('display', 'none');
             $('.userNameInfo').css('display', 'block');
-            $('.userNameInfo').text('欢迎您，'+data.user.u_name);
+            $('.userNameInfo').text('欢迎您，' + data.user.u_name);
             $('.userNode').html(`<div class="userCenter">
                 <div class="userHeader">
                     <img src="${data.user.u_header}" alt="">
@@ -48,9 +48,16 @@ $('.loginTrue').on('click', function () {
         dataType: 'JSON',
         success: function (data) {
             if (data.code == 200) {
+                //登录成功提示
+                $(".tipText").text("登录成功!")
+                $(".tooltip").show()
+                setTimeout(() => {
+                    $(".tooltip").hide()
+                }, 1000)
+
                 $('.loginBox2').css('display', 'none');
                 $('.userNameInfo').css('display', 'block');
-                $('.userNameInfo').text('欢迎您，'+data.data.user.u_name);
+                $('.userNameInfo').text('欢迎您，' + data.data.user.u_name);
                 $('.userNode').html(`<div class="userCenter">
                 <div class="userHeader">
                     <img src="${data.data.user.u_header}" alt="">
@@ -91,28 +98,37 @@ $('.info').on('click', '.exitLogin', function () {
         success: data => {
             console.log(data);
             if (data.code == 200) {
+                $(".tipText").text("退出成功!")
+                $(".tooltip").show()
+                setTimeout(() => {
+                    $(".tooltip").hide()
+                }, 1000)
                 window.location.reload()
             }
         }
     })
 });
 //点击修改名称
+let uid =0;
 $('.info').on('click', '.modifyName', function () {
     $(this).prev().removeAttr('disabled').focus();
-    let uid = $(this).attr('data-id');
+    uid = $(this).attr('data-id');
     $(this).css('display', 'none')
     $('.modifyNameTrue').css('display', 'block');
 });
 $('.info').on('click', '.modifyNameTrue', function () {
     let newName = $(this).prev().prev().val();
-    console.log(newName);
     $.ajax({
         url: '/modifyName',
         type: 'POST',
         dataType: 'JSON',
         data: { uid, newName },
         success: data => {
-            console.log(data);
+            $(".tipText").text("修改成功!")
+            $(".tooltip").show()
+            setTimeout(() => {
+                $(".tooltip").hide()
+            }, 1000)
             if (data.code == 200) {
                 window.location.reload()
             }
@@ -131,9 +147,9 @@ $('.info').on('click', '.userCar', function () {
     location.href = '../pages/cart.html';
 });
 //搜索功能
-$('.search_button').on('click',function(e){
+$('.search_button').on('click', function (e) {
     e.preventDefault();
-    let searchVal=$('.search_input').val();
+    let searchVal = $('.search_input').val();
     // sessionStorage.setItem('val',searchVal);
     window.location = encodeURI(encodeURI(`../pages/search.html?searchVal=${searchVal}`))
     // location.href=`../pages/search.html?searchVal=${searchVal}`

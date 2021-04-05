@@ -10,8 +10,7 @@
 
 ******************************/
 
-$(document).ready(function()
-{
+$(document).ready(function () {
 	"use strict";
 
 	/* 
@@ -24,10 +23,8 @@ $(document).ready(function()
 	var burger = $('.hamburger');
 	var menuActive = false;
 
-	$(window).on('resize', function()
-	{
-		setTimeout(function()
-		{
+	$(window).on('resize', function () {
+		setTimeout(function () {
 			$(window).trigger('resize.px.parallax');
 		}, 375);
 	});
@@ -40,30 +37,21 @@ $(document).ready(function()
 
 	*/
 
-	function initMenu()
-	{
-		if(menu.length)
-		{
-			if($('.hamburger').length)
-			{
-				burger.on('click', function()
-				{
-					if(menuActive)
-					{
+	function initMenu() {
+		if (menu.length) {
+			if ($('.hamburger').length) {
+				burger.on('click', function () {
+					if (menuActive) {
 						closeMenu();
 					}
-					else
-					{
+					else {
 						openMenu();
 
-						$(document).one('click', function cls(e)
-						{
-							if($(e.target).hasClass('menu_mm'))
-							{
+						$(document).one('click', function cls(e) {
+							if ($(e.target).hasClass('menu_mm')) {
 								$(document).one('click', cls);
 							}
-							else
-							{
+							else {
 								closeMenu();
 							}
 						});
@@ -73,14 +61,12 @@ $(document).ready(function()
 		}
 	}
 
-	function openMenu()
-	{
+	function openMenu() {
 		menu.addClass('active');
 		menuActive = true;
 	}
 
-	function closeMenu()
-	{
+	function closeMenu() {
 		menu.removeClass('active');
 		menuActive = false;
 	}
@@ -89,18 +75,18 @@ $(document).ready(function()
 
 
 //通过传过来的商品id渲染数据
-let shop_id = location.search.replace('?shop_id=',"")
+let shop_id = location.search.replace('?shop_id=', "")
 console.log(shop_id);
 $.ajax({
-	url:'/yy_shopInfo',
-	type:'get',
-	dataType:'json',
-	data:{
+	url: '/yy_shopInfo',
+	type: 'get',
+	dataType: 'json',
+	data: {
 		shop_id
 	},
 	success(data) {
 		//渲染
-		data.imgs.forEach((value,index)=>{
+		data.imgs.forEach((value, index) => {
 			$('.product_content_inner').append(`
                <div class="shop_img"><img src="${value.i_src}"></div>
 			`)
@@ -108,7 +94,7 @@ $.ajax({
 			$('.product_price').html(`￥${data.shop_info[0].p_price}`)
 		})
 		//渲染尺码
-		data.size.forEach((value)=>{
+		data.size.forEach((value) => {
 			$('.product_size_').append(`
 				      <li class="size_available">
                  <div class="regular_radio radio_1"></div>
@@ -119,36 +105,41 @@ $.ajax({
 
 		//选择尺码
 		let shop_size_
-		$('.product_size_').on('click','.size_available',function(){
+		$('.product_size_').on('click', '.size_available', function () {
 			shop_size_ = $(this).find('label').html();
 			$(this).find('label').addClass('clicked')
 			$(this).siblings().find('label').removeClass('clicked')
-			$('.tishi_size').css("display","none")
+			$('.tishi_size').css("display", "none")
 		})
 
 		//确认添加
 		$('.cart_button').click(function (e) {
 			e.preventDefault()
-			if(shop_size_){
+			if (shop_size_) {
 				$.ajax({
 					url: '/addCar',
 					type: 'get',
 					dataType: 'json',
-					data:{
+					data: {
 						shop_id,
-						shop_size:shop_size_,
-						shop_price:$('.product_price').html().slice(1)
+						shop_size: shop_size_,
+						shop_price: $('.product_price').html().slice(1)
 					},
 					success(data) {
-						if(data.code==200){
-						}else {
-							$('.tishi_modal').css("display","block")
-							$('.tishi_box').css("display","block")
+						if (data.code == 200) {
+							$(".tipText").text("添加成功!")
+							$(".tooltip").show()
+							setTimeout(() => {
+								$(".tooltip").hide()
+							}, 1000)
+						} else {
+							$('.tishi_modal').css("display", "block")
+							$('.tishi_box').css("display", "block")
 						}
 					}
 				})
-			}else {
-				$('.tishi_size').css("display","block")
+			} else {
+				$('.tishi_size').css("display", "block")
 			}
 		})
 	}
@@ -156,6 +147,6 @@ $.ajax({
 
 //关闭提示框
 function close_modal() {
-	$('.tishi_modal').css("display","none")
-	$('.tishi_box').css("display","none")
+	$('.tishi_modal').css("display", "none")
+	$('.tishi_box').css("display", "none")
 }

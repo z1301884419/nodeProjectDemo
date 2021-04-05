@@ -101,6 +101,11 @@ $('.cart_items').on('click', '.orderDelBtn', function () {
         dataType: 'JSON',
         success: data => {
             if (data.code == 200) {
+                $(".tipText").text("删除成功!")
+                $(".tooltip").show()
+                setTimeout(() => {
+                    $(".tooltip").hide()
+                }, 1000)
                 xuanran()
             }
         }
@@ -286,6 +291,11 @@ $('.cart_items').on('click', '.orderPayBtn', function () {
                         dataType: 'JSON',
                         success: data => {
                             if (data.code == 200) {
+                                $(".tipText").text("支付成功!")
+                                $(".tooltip").show()
+                                setTimeout(() => {
+                                    $(".tooltip").hide()
+                                }, 1000)
                                 xuanran();
                             }
                         }
@@ -295,13 +305,13 @@ $('.cart_items').on('click', '.orderPayBtn', function () {
         }
     })
 })
-$('.cart_items').on('click','.cartCaozuo', function () {
+$('.cart_items').on('click', '.cartCaozuo', function () {
     let text = $(this).text();
     console.log(text)
     if (text == '退款') {
-        $(this).text('退款中  取消退款')  
+        $(this).text('退款中  取消退款')
     }
-    else if(text=='退款中  取消退款'){
+    else if (text == '退款中  取消退款') {
         $(this).text('退款')
     }
 })

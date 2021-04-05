@@ -78,7 +78,7 @@ module.exports = {
         return_data_result += single_total;
         return_data["items"] = return_data_items;
         return_data["result"] = return_data_result;
-        console.log(return_data);
+        // console.log(return_data);
         let modifyCart = await dbDao.updateInfo(
             `update cart set c_number = ?, c_total=? where c_id = ?`,
             [new_Number, single_total, total_data[0]["id"]]
@@ -147,7 +147,6 @@ module.exports = {
             })
     },
     async checkOutSelect(req, resp) {
-        // console.log(req.query);
 
         let sqlStr = 'SELECT * FROM cart WHERE '
         for (let i = 0; i < req.query.id.length; i++) {
@@ -158,45 +157,48 @@ module.exports = {
             sqlStr,
             []
         );
+
         let newDate = [];
         let newd = + new Date();
         newDate.push(newd);
-        // console.log(checkCartInfo);
         let totalAccount = 0;
         checkCartInfo.data.forEach(item => {
             totalAccount += parseInt(item.c_total)
         })
-        let sqlStr1 = `INSERT INTO orderTable VALUES (null, ${newDate[0]}, ${checkCartInfo.data[0].c_uid}, '待支付', ${totalAccount} )`
-        // // console.log(sqlStr1);
+        let sqlStr1 = `INSERT INTO orderTable VALUES (null, ${newDate[0]}, ${checkCartInfo.data[0].c_uid}, '待支付', ${totalAccount} )`;
         let addOrderInfo = await dbDao.insertInfo(
             sqlStr1,
             []
         );
-        // console.log(addOrderInfo);
-        // console.log(totalAccount);
 
-        let sqlStr2 = `Select o_id from orderTable where o_code=${newDate[0]}`
-        // console.log(sqlStr2);
+        let sqlStr2 = `Select o_id from orderTable where o_code=${newDate[0]}`;
         let selectOrderInfo = await dbDao.selectInfo(
             sqlStr2,
             []
         );
-        console.log(selectOrderInfo);
 
-        // console.log();
-        let sqlStr3 = 'INSERT INTO orderRelationship VALUES'
-        // let newDateArr = [];
+
+        let sqlStr3 = 'INSERT INTO orderRelationship VALUES';
         checkCartInfo.data.forEach((item, i) => {
             sqlStr3 += `(null, ${item.c_pid}, ${selectOrderInfo.data[0].o_id}, ${item.c_number}, '${item.c_size}'),`
         })
-        // // console.log(newDateArr);
         sqlStr3 = sqlStr3.substr(0, sqlStr3.length - 1);
-        console.log(sqlStr3);
         let addOrderRelationInfo = await dbDao.insertInfo(
             sqlStr3,
             []
         );
-        // console.log(addOrderRelationInfo);
+
+        let sqlStr4 = 'DELETE FROM cart WHERE c_id IN(';
+        for (let i = 0; i < req.query.id.length; i++) {
+            sqlStr4 += `${req.query.id[i]},`
+        }
+        sqlStr4 = sqlStr4.substr(0, sqlStr4.length - 1);
+        sqlStr4 += ')';
+        let delCartInfo = await dbDao.deleteInfo(
+            sqlStr4,
+            []
+        );
+
         resp.send({
             code: addOrderRelationInfo.code,
             msg: addOrderRelationInfo.msg,
@@ -259,66 +261,10 @@ module.exports = {
                     })
                 }
             })
-        // console.log(req.query);
-        // let return_total = 0;
-        // let str = 'select * from cart where '
-        // req.query.total_data.forEach(item => {
-        //     str += `c_id=${item.id} or `
-        //     return_total += parseFloat(item.c_total);
-        // })
-        // str = str.substr(0, str.length - 3);
-        // // console.log(str);
 
-        // dbConfig.DB(str,
-        //     [],
-        //     (err, data) => {
-        //         if (!err) {
-        //             if (data.length > 0) {
-        //                 resp.send({
-        //                     code: 200,
-        //                     message: '删除成功',
-        //                     data: {
-        //                         return_total: return_total,
-        //                         list: selectInfo.data,
-        //                         queryArr: req.query
-        //                     }
-        //                 })
-        //             }
-        //         } else {
-        //             resp.send({
-        //                 code: 401,
-        //                 message: '删除失败'
-        //             })
-        //         }
-        //     })
-
-        // let selectInfo = await dbDao.selectInfo(
-        //     str,
-        //     []
-        // );
-        // console.log(selectInfo.data);
-
-
-        // resp.send({
-        //     code: 200,
-        //     message: '查询成功',
-        //     data: {
-        //         return_total: return_total,
-        //         list: selectInfo.data,
-        //         queryArr: req.query
-        //     }
-        // })
-
-        // let delInfo = await dbDao.deleteInfo(
-        //     str1,
-        //     []
-        // );
-        // console.log(delInfo);
-
-
-    },
-    async delCartInfo(req, resp) {
-        console.log(req.body);
+    }
+    // delCartInfo(req, resp) {
+    //     console.log(req.query);
         // let str1 = 'DELETE FROM cart WHERE c_id IN(';
         // selectInfo.data.forEach(item => {
         //     return_total += parseFloat(item.c_total);
@@ -331,5 +277,5 @@ module.exports = {
         //     str,
         //     []
         // );
-    }
+    // }
 }

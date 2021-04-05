@@ -17,6 +17,5 @@ cartRouter.post('/modifyPaymentState', cartcontrol.modifyPaymentState);
 
 cartRouter.get('/checkAll', cartcontrol.checkAll);
 
-cartRouter.get('/delCartInfo', cartcontrol.delCartInfo);
 
 module.exports = cartRouter;

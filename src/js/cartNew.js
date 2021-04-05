@@ -69,7 +69,6 @@ $(".button_clear").click(() => {
 //选
 $(".cart_items_list").on("change", ".checkBox", function () {
     $(".checkboxAll").prop("checked", $(".checkBox:checked").length === dataLength);
-    // calTotal(self, self.data("cid"))
     let total_data = [];
     console.log();
     for (let i = 0; i < $(".checkBox").length; i++) {
@@ -150,8 +149,8 @@ $(".cart_items_list").on("click", ".qty_sub", function () {
     console.log(add_or_sub);
     let numCount = parseInt($(this).siblings(".product_num").text());
     numCount--;
-    numCount = numCount < 1 ? 1 : numCount;
-    $(this).siblings(".product_num").text(numCount)
+    numCount = numCount < 0 ? 0 : numCount;
+    $(this).siblings(".product_num").text(numCount);
     total_data.push({
         "id": $(this).attr("data-cid") + '',
         "num": numCount,
@@ -159,36 +158,41 @@ $(".cart_items_list").on("click", ".qty_sub", function () {
         // 如果是加就用true
         "add_or_sub": add_or_sub
     })
-    $.ajax({
-        url: '/modifyCartNum',
-        type: 'GET',
-        dataType: 'json',
-        data: {
-            total_data: total_data
-        },
-        success: data => {
-            // console.log(data);
-            $(this).siblings(".product_num").text(data.data.items[0].num);
-            total = parseFloat($(".totalAccount").text());
-            $(this).parents(".product_quantity_container").siblings(".product_total").text(data.data.result)
-            if ($(this).parents(".product_quantity_container").siblings(".product_color").children(".checkBox").prop("checked")) {
-                if (numCount > 1) {
-                    // console.log(numCount);
-                    total -= parseFloat(data.data.items[0].p_price)
-                    // console.log(total);
-                } else if(numCount == 1) {
-                    total = total - parseFloat(data.data.items[0].p_price);
-                    // $(this).
+    if (numCount >= 1) {
+        $.ajax({
+            url: '/modifyCartNum',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                total_data: total_data
+            },
+            success: data => {
+                console.log(data.data);
+                $(this).siblings(".product_num").text(data.data.items[0].num);
+                total = parseFloat($(".totalAccount").text());
+                $(this).parents(".product_quantity_container").siblings(".product_total").text(data.data.result)
+                if ($(this).parents(".product_quantity_container").siblings(".product_color").children(".checkBox").prop("checked")) {
+                    if (numCount > 1) {
+                        // console.log(numCount);
+                        total -= parseFloat(data.data.items[0].p_price)
+                        // console.log(total);
+                    } else if (numCount == 1) {
+                        console.log(numCount);
+                        total = parseFloat(total) - parseFloat(data.data.items[0].p_price);
+                    }
+                    $(".totalAccount").text(total)
                 }
-                // console.log(total);
-                $(".totalAccount").text(total)
+            },
+            error: () => {
+                console.log('出错啦!!!');
             }
-        },
-        error: () => {
-            console.log('出错啦!!!');
-        }
-    })
+        })
+    } else {
+        $(this).siblings(".product_num").text("1");
+    }
+
 })
+
 
 // 全选和全不选
 $(".checkboxAll").change(function () {
@@ -214,12 +218,13 @@ $(".checkboxAll").change(function () {
                 console.log('出错啦!!!');
             }
         })
-    } else{
+    } else {
         $(".totalAccount").text(0)
     }
 })
 
 // 点击去结算生成新订单
+// if($(".checkBox").prop("checked")){
 $(".checkOut").on("click", () => {
     let cartArr = [];
     for (let i = 0; i < $(".checkBox:checked").length; i++) {
@@ -235,7 +240,21 @@ $(".checkOut").on("click", () => {
         },
         success: data => {
             console.log(data);
-            $(".total_amount").text(data.data.total)
+            $(".total_amount").text(data.data.total);
+            $.ajax({
+                url: '/delCartInfo',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    o_code: data.data.code
+                },
+                success: data => {
+                    console.log(data);
+                },
+                error: () => {
+                    console.log('出错啦!!!');
+                }
+            })
             // 点击支付修改状态
             $(".cartPayment").on('click', () => {
                 $.ajax({
@@ -247,6 +266,12 @@ $(".checkOut").on("click", () => {
                     },
                     success: data => {
                         console.log(data);
+                        $(".tipText").text("支付成功!")
+                        $(".tooltip").show()
+                        setTimeout(() => {
+                            $(".tooltip").hide()
+                        }, 1000)
+                        location.reload();
                     },
                     error: () => {
                         console.log('出错啦!!!');
@@ -259,11 +284,16 @@ $(".checkOut").on("click", () => {
         }
     })
 })
+// }
+$(".cancelBtn").click(() => {
+    location.reload();
+})
+
 
 // 跳转商品详情
-$('.cart_items_list').on('click','.product_name',function(){
-    let id=$(this).attr('data-cid');
-    location.href=`../pages/product.html?shop_id=${id}`;
+$('.cart_items_list').on('click', '.product_name', function () {
+    let id = $(this).attr('data-cid');
+    location.href = `../pages/product.html?shop_id=${id}`;
 })
 
 
