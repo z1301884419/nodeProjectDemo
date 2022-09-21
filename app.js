@@ -39,5 +39,5 @@ app.use(express.static(__dirname + '/src'));
 app.use(favicon(__dirname + '/src/images/view_3.png'));
 
 app.listen(8888, () => {
-    console.log('第三组项目服务器开启~');
+    console.log('服务器开启~');
 })
